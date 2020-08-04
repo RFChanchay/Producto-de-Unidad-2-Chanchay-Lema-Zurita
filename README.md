@@ -146,12 +146,69 @@ Operaciones Básicas
 
 **6.Funciones hiperbólicas**
 
+La calculadora solamente podrá efectuar una operación a la vez y para el caso de las operaciones básicas únicamente puede operar 2 números a la vez. La calculadora contará con la opción de seleccionar que tipo de operación quiera realizar el usuario según el interruptor activo que el menú del programa le indique al usuario.
+El esquema para los interruptores es el siguiente:
 
+![](img/6.png)
 
+El circuito contará con 6 interruptores selectores conectados a los pines GPIO: 3,5,7,11,13,15. Cabe aclarar que para seleccionar la operación de la calculadora solo se debe seleccionar una operación e indicarla en el interruptor correspondiente a esa función, si el usuario escoge más de 2 operaciones el programa le indicará un error.
+Para el ingreso de números será necesario un teclado.
 
+## 6.Lista de Componentes
+### Calculadora científica programada con python para RaspberryPi
+- 6 resistencias de 4.7k
+- 6 interruptores
+- 1 Raspberry pi
+- 1 Teclado
+## 7.Mapa de Variables
+### Calculadora científica programada con python para RaspberryPi
+Programa General
 
+![](img/7.png)
 
+Para cada función describiremos de forma general las variables según el tipos de cálculo a realizar:
+Menús
 
+![](img/8.png)
 
+Cálculos Básicos
 
+![](img/9.png)
+
+Funciones Trigonometricas
+
+![](img/10.png)
+
+Raíces
+
+![](img/11.png)
+
+Potencia
+
+![](img/12.png)
+
+Logaritmos
+
+![](img/13.png)
+
+Factorial
+
+![](img/14.png)
+
+Valor Absoluto
+
+![](img/15.png)
+
+Funciones Hiperbolicas
+
+![](img/16.png)
+
+Funciones para GPIO
+Iniciar gpio
+No necesita variables
+Selector de pin
+
+![](img/17.png)
+
+## 8.Explicacion de codigo fuente
 
