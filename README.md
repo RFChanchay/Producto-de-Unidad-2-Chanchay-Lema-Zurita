@@ -133,11 +133,17 @@ Dentro de las herramientas que nos ofrece este compilador contamos con la de en 
 ### Calculadora científica programada con python para RaspberryPi
 El siguiente diagrama muestra el esquema de conexión de una calculadora científica en Raspberry pi, esta esta calculadora contará con distintos los siguientes cálculos: 
 Operaciones Básicas
+
 **1.Funciones trigonométricas**
+
 **2.Raíces,Potencias y Logaritmos**
+
 **3.Valores Absolutos**
+
 **4.Factorial**
+
 **5.Operaciones Basicas**
+
 **6.Funciones hiperbólicas**
 
 
