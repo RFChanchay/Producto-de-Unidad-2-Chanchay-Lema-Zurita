@@ -1,7 +1,7 @@
 # Producto-de-Unidad-2-Chanchay-Lema-Zurita
 
 ## 1.Planteamiento del Problema
-Identificar, Investigar y llevar a la práctica una interfaz gráfica en Node-Red y una Calculadora Científica con POO(Programacion orientada a objetos) esto en una Raspberry Pi
+Investigar y llevar a la práctica la programacion orientada a objetos (POO) mediante 2 ejemplos para los cuales se usara 2 plataformas.
 
 ## 2.Objetivos
 - **General**
