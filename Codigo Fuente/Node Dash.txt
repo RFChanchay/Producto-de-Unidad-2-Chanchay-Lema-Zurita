@@ -1,0 +1,598 @@
+//Se explicara el primer nodo ya que la misma configuracion se uso para los demas 
+[
+    {
+        "id": "4b47f5ce.da535c",
+        "type": "ui_button",  // se incluye el boton como inicio de la interfaz 
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "group": "d45940ce.b9cb7",
+        "order": 0,  // el orden, espacio, y demas no se modifican
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Instrucciones ",  // se le da el nombre de instrucciones en la etiqueta
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Llene los diferentes campos presentados a continuacion a manera de recopilar sus datos",  // nos regresara este mensaje al presionar el boton
+        "payloadType": "str",
+        "topic": "",
+        "x": 150,
+        "y": 40,
+        "wires": [
+            [
+                "8f8a3c22.1752b",
+                "5669a918.959f18",
+                "a6d74d5d.6c7d6"
+            ]
+        ]
+    },
+    {
+        "id": "d45940ce.b9cb7",
+        "type": "ui_group",
+        "z": "",
+        "name": "pulse para leer las intrucciones", //el nombre se lo usa como instruccion 
+        "tab": "1bf19278.efedfe",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "1bf19278.efedfe",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Salud",
+        "icon": "dashboard",
+        "order": 2,
+[
+    {
+        "id": "3f8d5747.64fe38",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "4b47f5ce.da535c",
+        "type": "ui_button",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "group": "d45940ce.b9cb7",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Instrucciones ",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Llene los diferentes campos presentados a continuacion a manera de recopilar sus datos",
+        "payloadType": "str",
+        "topic": "",
+        "x": 150,
+        "y": 40,
+        "wires": [
+            [
+                "8f8a3c22.1752b",
+                "5669a918.959f18",
+                "a6d74d5d.6c7d6"
+            ]
+        ]
+    },
+    {
+        "id": "8f8a3c22.1752b",
+        "type": "debug",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "5669a918.959f18",
+        "type": "ui_text",
+        "z": "3f8d5747.64fe38",
+        "group": "d45940ce.b9cb7",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 430,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "4e1a8413.6d2f5c",
+        "type": "ui_dropdown",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "place": "seleccione su genero",
+        "group": "82511ffa.007e1",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Masculino",
+                "value": "1",
+                "type": "str"
+            },
+            {
+                "label": "Femenino",
+                "value": "2",
+                "type": "str"
+            },
+            {
+                "label": "Gay ",
+                "value": "3",
+                "type": "str"
+            },
+            {
+                "label": "Lesbiana ",
+                "value": "4",
+                "type": "str"
+            },
+            {
+                "label": "Bisexual",
+                "value": "5",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "x": 140,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e2d4cfa7.1a02b",
+        "type": "ui_slider",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "Marzo-Abril",
+        "tooltip": "",
+        "group": "f57592e5.7ffea",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "x": 140,
+        "y": 360,
+        "wires": [
+            [
+                "49f1c76.a193138"
+            ]
+        ]
+    },
+    {
+        "id": "49f1c76.a193138",
+        "type": "ui_chart",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "group": "f57592e5.7ffea",
+        "order": 8,
+        "width": "6",
+        "height": "5",
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "D/M",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "1",
+        "ymax": "10",
+        "removeOlder": 1,
+        "removeOlderPoints": "12",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 440,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5b9dec06.1809e4",
+        "type": "ui_slider",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "Septiembre-Octubre",
+        "tooltip": "",
+        "group": "f57592e5.7ffea",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "x": 190,
+        "y": 500,
+        "wires": [
+            [
+                "49f1c76.a193138"
+            ]
+        ]
+    },
+    {
+        "id": "234addce.c1a8a2",
+        "type": "ui_slider",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "Enero-Febrero",
+        "tooltip": "",
+        "group": "f57592e5.7ffea",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "x": 150,
+        "y": 320,
+        "wires": [
+            [
+                "49f1c76.a193138"
+            ]
+        ]
+    },
+    {
+        "id": "1eb796cd.a27f29",
+        "type": "ui_slider",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "Mayo-Junio",
+        "tooltip": "",
+        "group": "f57592e5.7ffea",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "x": 160,
+        "y": 420,
+        "wires": [
+            [
+                "49f1c76.a193138"
+            ]
+        ]
+    },
+    {
+        "id": "fa5fbb8f.4b7d28",
+        "type": "ui_slider",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "Julio-Agosto",
+        "tooltip": "",
+        "group": "f57592e5.7ffea",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "x": 160,
+        "y": 460,
+        "wires": [
+            [
+                "49f1c76.a193138"
+            ]
+        ]
+    },
+    {
+        "id": "5177b99f.8821c8",
+        "type": "ui_slider",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "Noviembre-Diciembre",
+        "tooltip": "",
+        "group": "f57592e5.7ffea",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "x": 170,
+        "y": 560,
+        "wires": [
+            [
+                "49f1c76.a193138"
+            ]
+        ]
+    },
+    {
+        "id": "bdf53fdc.eab9c",
+        "type": "ui_gauge",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "group": "82511ffa.007e1",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Que tan identificado se siente con ese genero",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 370,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "4e7cdcc3.ec8b74",
+        "type": "ui_text_input",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "Justifique.¿Por que se siente identificado con ese genero?",
+        "tooltip": "",
+        "group": "82511ffa.007e1",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 310,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b52ae673.c47008",
+        "type": "ui_slider",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "slider",
+        "tooltip": "",
+        "group": "82511ffa.007e1",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "x": 100,
+        "y": 740,
+        "wires": [
+            [
+                "bdf53fdc.eab9c",
+                "d90fa61d.384018"
+            ]
+        ]
+    },
+    {
+        "id": "d90fa61d.384018",
+        "type": "ui_chart",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "group": "82511ffa.007e1",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 240,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "99e6a810.574f78",
+        "type": "ui_switch",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "Activo sexualmente? ",
+        "tooltip": "",
+        "group": "d45940ce.b9cb7",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "style": "",
+        "onvalue": "activo ",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "inactivo",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "x": 220,
+        "y": 940,
+        "wires": [
+            [
+                "a63469a2.f17e98",
+                "5ddb3217.e4d4ec",
+                "411236bd.e9d578",
+                "73c45fc1.bfa0e"
+            ]
+        ]
+    },
+    {
+        "id": "a63469a2.f17e98",
+        "type": "debug",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "5ddb3217.e4d4ec",
+        "type": "ui_text",
+        "z": "3f8d5747.64fe38",
+        "group": "d45940ce.b9cb7",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "estado",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 480,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "3258f36.2fba10c",
+        "type": "ui_colour_picker",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "",
+        "group": "e7310b07.733d58",
+        "format": "hex",
+        "outformat": "string",
+        "showSwatch": true,
+        "showPicker": true,
+        "showValue": false,
+        "showHue": false,
+        "showAlpha": false,
+        "showLightness": true,
+        "square": "false",
+        "dynOutput": "false",
+        "order": 1,
+        "width": "6",
+        "height": "4",
+        "passthru": true,
+        "topic": "",
+        "x": 230,
+        "y": 1120,
+        "wires": [
+            []
+        ]
+    },
+
+        "type": "ui_group",
+        "z": "",
+        "name": "Frecuencia de actividad sexual por meses",
+        "tab": "1bf19278.efedfe",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "e7310b07.733d58",
+        "type": "ui_group",
+        "z": "",
+        "name": "Color favorito ",
+        "tab": "1bf19278.efedfe",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "1bf19278.efedfe",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Salud",
+        "icon": "dashboard",
+        "order": 2,
+ }
