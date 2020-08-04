@@ -6,7 +6,7 @@ Identificar, Investigar y llevar a la práctica una interfaz gráfica en Node-Re
 ## 2.Objetivos
 - **General**
      - Diseñar programas funcionales para las plataformas o dispositivos Node-Red y Raspberry pi.
-   - **Específicos**
+- **Específicos**
      - Aplicar conceptos de programación orientada a objetos mediante la creación de un programa funcional en python que sea corrido en una Raspberry pi.
      - Implementar una calculadora científica en una raspberry pi agregando controles mediante el puerto GPIO y programación orientada a objetos.
      - Crear una interfaz humano máquina mediante Node-Red.
