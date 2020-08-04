@@ -109,14 +109,36 @@ miObjeto.metodo()
   
 Constructor __init__()
 El método __init__() es un método especial, el cual se ejecuta al momento de instanciar un objeto. El comportamiento de __init__() es muy similar a los “constructores” en otros lenguajes. Los argumentos que se utilizan en la definición de __init__() corresponden a los parámetros que se deben ingresar al instanciar un objeto.
+
    def __init__(self, cedula, nombre, apellido, sexo):
-        """Constructor de clase Persona"""
-        self.cedula = cedula
-        self.nombre = nombre
-        self.apellido = apellido
-        self.sexo = sexo
+   
+Constructor de clase Persona
+        
+self.cedula = cedula
+        
+self.nombre = nombre
+       
+self.apellido = apellido
+       
+self.sexo = sexo
 
+#### Compilador create.with.code.uk
+Este compilador nace como un proyecto en el Reino Unido destinado a la enseñanza de programación en python para los niños ofreciendo una gran cantidad de herramientas, librerías y tutoriales sin la necesidad de tener que descargar nada en nuestra computadora.
+Dentro de las herramientas que nos ofrece este compilador contamos con la de en emulador de puertos GPIO del raspberry pi usando únicamente la librería de python propia del uso de una GPIO RPi.GPIO.
 
+![](img/5.png)
+
+## 5.Diagramas
+### Node-Red
+### Calculadora científica programada con python para RaspberryPi
+El siguiente diagrama muestra el esquema de conexión de una calculadora científica en Raspberry pi, esta esta calculadora contará con distintos los siguientes cálculos: 
+Operaciones Básicas
+**1.Funciones trigonométricas
+2.Raíces,Potencias y Logaritmos
+3.Valores Absolutos
+4.Factorial
+5.Operaciones Basicas
+6.Funciones hiperbólicas**
 
 
 
