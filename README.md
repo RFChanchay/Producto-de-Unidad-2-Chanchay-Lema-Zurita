@@ -17,11 +17,24 @@ Identificar, Investigar y llevar a la práctica una interfaz gráfica en Node-Re
 ![](img/3.png)
 
 En lo que respecta a nuestro Producto de Unidad cada una de estas investigaciones tienen su aportación pero estas deberán ser analizadas desde 2 perspectivas distintas.
- -Respecto al ámbito educativo Raspberry es un dispositivo con el cual podemos aprender acerca de distintas materias dentro de la computación como lo seria programacion o robotica a un bajo costo.
+ - Respecto al ámbito educativo Raspberry es un dispositivo con el cual podemos aprender acerca de distintas materias dentro de la computación como lo seria programacion o robotica a un bajo costo.
  - Herramientas como Raspberry o Node-Red no solamente nos son útiles para aprender, sino nos pueden ayudar  a solucionar problemas reales como lo son el control de tráfico de una ciudad y no solo solucionarlos, sino darles un valor agregado como lo es agregar IoT con Raspberry o plataformas de recopilación de datos visuales mediante Node-Red.
  
 ## 4.Marco Teórico
 ### Node-Red
+#### ¿Qué es una interfaz HMI?
+HMI son las siglas de human-machine interface y se refieren a un panel que permite a un usuario comunicarse con una máquina, software o sistema. Técnicamente, se puede referir a cualquier pantalla que se use para interactuar con un equipo, pero se utiliza normalmente para las de entornos industriales. Las HMI muestran datos en tiempo real y permiten al usuario controlar las máquinas con una interfaz gráfica de usuario.
+#### Función  principal
+La función principal de los HMI es mostrar información en tiempo real, proporcionar gráficos visuales y digeribles que aporten significado y contexto sobre el estado del motor, la válvula, niveles y demás parámetros de un determinado proceso.
+Es decir, suministran información operativa al proceso y permiten controlar y optimizar los objetivos de productos y del proceso en sí. Si tuviéramos que mencionar palabras clave que definan el sistema HMI es: operar y observar.
+#### ¿Cómo diseñar una interfaz HMI en Node RED?
+Para poder diseñar una interfaz hombre máquina que sea atractiva visualmente y que cumpla con su proceso de interacción correcto, podemos utilizar un dashboard en la herramienta de programación de Node-RED, la cual nos permitirá ir creando una interfaz por medio de Widgets manipulables a antojo del programador para que finalmente llegue a ser intuitivo para el usuario que vaya hacer uso de esta interfaz.
+#### ¿Que es Node-RED dashboard?
+Este módulo proporciona un conjunto de nodos en Node-RED para crear rápidamente un panel de datos en vivo.
+Estos nodos requieren node.js versión 8. La última versión para admitir el nodo v6 fue 2.9.5.
+Desde la versión 2.10.0, puede crear e instalar nodos de widget como otros nodos Node-RED.
+
+![](img/25.png)
 
 ### Raspberry Pi
 #### ¿Qué es Raspberry y para qué sirve? 
@@ -130,6 +143,36 @@ Dentro de las herramientas que nos ofrece este compilador contamos con la de en 
 
 ## 5.Diagramas
 ### Node-Red
+En el siguiente diagrama se evidencia los nodos utilizados con sus respectivas conexiones para poder realizar la interfaz HMI
+
+![](img/26.png)
+
+### Diagramas por grupos
+#### Grupo instrucciones
+Boton que al presionarlo nos devolvera como salida un mensaje acompañado con una salida de audio, en este caso el botón nos desplegara unas instrucciones.
+
+![](img/27.png)
+
+Switch que nos permitirá cambiar entre dos estados (activo e inactivo) al cual se la ha añadido una salida de audio y se le adiciono el mostrar una notificación del estado en el que se encuentra
+
+![](img/28.png)
+
+#### Grupo Género
+El dropdown nos permite elegir entre diferentes opciones, en este caso se la indicado que muestre opciones de género.
+También podemos observar una entrada de texto con el fin de que responda a la pregunta planteada en la etiqueta 
+Por último podemos ver un slider, conectado a un char y un gauge que nos arrojan un resultado de manera gráfica y estadística acorde a cuanto deslicemos el slider.
+
+![](img/29.png)
+
+#### Grupo frecuencia de actividad sexual
+Este grupo está representado mediante sliders que representan un periodo de tiempo en meses, los cuales serán representados gráficamente mediante el chart, el cual nos presenta varios métodos de graficación, en este caso hemos usado el modo de línea.
+
+![](img/30.png)
+
+#### Grupo Color Favorito
+
+![](img/31.png)
+
 ### Calculadora científica programada con python para RaspberryPi
 El siguiente diagrama muestra el esquema de conexión de una calculadora científica en Raspberry pi, esta esta calculadora contará con distintos los siguientes cálculos: 
 Operaciones Básicas
@@ -155,6 +198,9 @@ El circuito contará con 6 interruptores selectores conectados a los pines GPIO:
 Para el ingreso de números será necesario un teclado.
 
 ## 6.Lista de Componentes
+### Node-RED
+ - Instalar Node.js (version 10.0 en adelante)
+ - Incorporar el palette “Node-RED dashboard”
 ### Calculadora científica programada con python para RaspberryPi
 - 6 resistencias de 4.7k
 - 6 interruptores
@@ -215,6 +261,606 @@ Selector de pin.
 
 ## 8.Explicacion de codigo fuente
 ### Node-Red
+```
+//Se explicara el primer nodo ya que la misma configuracion se uso para los demas 
+[
+    {
+        "id": "4b47f5ce.da535c",
+        "type": "ui_button",  // se incluye el boton como inicio de la interfaz 
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "group": "d45940ce.b9cb7",
+        "order": 0,  // el orden, espacio, y demas no se modifican
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Instrucciones ",  // se le da el nombre de instrucciones en la etiqueta
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Llene los diferentes campos presentados a continuacion a manera de recopilar sus datos",  // nos regresara este mensaje al presionar el boton
+        "payloadType": "str",
+        "topic": "",
+        "x": 150,
+        "y": 40,
+        "wires": [
+            [
+                "8f8a3c22.1752b",
+                "5669a918.959f18",
+                "a6d74d5d.6c7d6"
+            ]
+        ]
+    },
+    {
+        "id": "d45940ce.b9cb7",
+        "type": "ui_group",
+        "z": "",
+        "name": "pulse para leer las intrucciones", //el nombre se lo usa como instruccion 
+        "tab": "1bf19278.efedfe",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "1bf19278.efedfe",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Salud",
+        "icon": "dashboard",
+        "order": 2,
+[
+    {
+        "id": "3f8d5747.64fe38",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "4b47f5ce.da535c",
+        "type": "ui_button",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "group": "d45940ce.b9cb7",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Instrucciones ",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Llene los diferentes campos presentados a continuacion a manera de recopilar sus datos",
+        "payloadType": "str",
+        "topic": "",
+        "x": 150,
+        "y": 40,
+        "wires": [
+            [
+                "8f8a3c22.1752b",
+                "5669a918.959f18",
+                "a6d74d5d.6c7d6"
+            ]
+        ]
+    },
+    {
+        "id": "8f8a3c22.1752b",
+        "type": "debug",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "5669a918.959f18",
+        "type": "ui_text",
+        "z": "3f8d5747.64fe38",
+        "group": "d45940ce.b9cb7",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 430,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "4e1a8413.6d2f5c",
+        "type": "ui_dropdown",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "place": "seleccione su genero",
+        "group": "82511ffa.007e1",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Masculino",
+                "value": "1",
+                "type": "str"
+            },
+            {
+                "label": "Femenino",
+                "value": "2",
+                "type": "str"
+            },
+            {
+                "label": "Gay ",
+                "value": "3",
+                "type": "str"
+            },
+            {
+                "label": "Lesbiana ",
+                "value": "4",
+                "type": "str"
+            },
+            {
+                "label": "Bisexual",
+                "value": "5",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "x": 140,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e2d4cfa7.1a02b",
+        "type": "ui_slider",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "Marzo-Abril",
+        "tooltip": "",
+        "group": "f57592e5.7ffea",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "x": 140,
+        "y": 360,
+        "wires": [
+            [
+                "49f1c76.a193138"
+            ]
+        ]
+    },
+    {
+        "id": "49f1c76.a193138",
+        "type": "ui_chart",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "group": "f57592e5.7ffea",
+        "order": 8,
+        "width": "6",
+        "height": "5",
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "D/M",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "1",
+        "ymax": "10",
+        "removeOlder": 1,
+        "removeOlderPoints": "12",
+        "removeOlderUnit": "604800",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 440,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5b9dec06.1809e4",
+        "type": "ui_slider",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "Septiembre-Octubre",
+        "tooltip": "",
+        "group": "f57592e5.7ffea",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "x": 190,
+        "y": 500,
+        "wires": [
+            [
+                "49f1c76.a193138"
+            ]
+        ]
+    },
+    {
+        "id": "234addce.c1a8a2",
+        "type": "ui_slider",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "Enero-Febrero",
+        "tooltip": "",
+        "group": "f57592e5.7ffea",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "x": 150,
+        "y": 320,
+        "wires": [
+            [
+                "49f1c76.a193138"
+            ]
+        ]
+    },
+    {
+        "id": "1eb796cd.a27f29",
+        "type": "ui_slider",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "Mayo-Junio",
+        "tooltip": "",
+        "group": "f57592e5.7ffea",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "x": 160,
+        "y": 420,
+        "wires": [
+            [
+                "49f1c76.a193138"
+            ]
+        ]
+    },
+    {
+        "id": "fa5fbb8f.4b7d28",
+        "type": "ui_slider",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "Julio-Agosto",
+        "tooltip": "",
+        "group": "f57592e5.7ffea",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "x": 160,
+        "y": 460,
+        "wires": [
+            [
+                "49f1c76.a193138"
+            ]
+        ]
+    },
+    {
+        "id": "5177b99f.8821c8",
+        "type": "ui_slider",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "Noviembre-Diciembre",
+        "tooltip": "",
+        "group": "f57592e5.7ffea",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "x": 170,
+        "y": 560,
+        "wires": [
+            [
+                "49f1c76.a193138"
+            ]
+        ]
+    },
+    {
+        "id": "bdf53fdc.eab9c",
+        "type": "ui_gauge",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "group": "82511ffa.007e1",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Que tan identificado se siente con ese genero",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 370,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "4e7cdcc3.ec8b74",
+        "type": "ui_text_input",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "Justifique.¿Por que se siente identificado con ese genero?",
+        "tooltip": "",
+        "group": "82511ffa.007e1",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 310,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b52ae673.c47008",
+        "type": "ui_slider",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "slider",
+        "tooltip": "",
+        "group": "82511ffa.007e1",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "x": 100,
+        "y": 740,
+        "wires": [
+            [
+                "bdf53fdc.eab9c",
+                "d90fa61d.384018"
+            ]
+        ]
+    },
+    {
+        "id": "d90fa61d.384018",
+        "type": "ui_chart",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "group": "82511ffa.007e1",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 240,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "99e6a810.574f78",
+        "type": "ui_switch",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "Activo sexualmente? ",
+        "tooltip": "",
+        "group": "d45940ce.b9cb7",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "style": "",
+        "onvalue": "activo ",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "inactivo",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "x": 220,
+        "y": 940,
+        "wires": [
+            [
+                "a63469a2.f17e98",
+                "5ddb3217.e4d4ec",
+                "411236bd.e9d578",
+                "73c45fc1.bfa0e"
+            ]
+        ]
+    },
+    {
+        "id": "a63469a2.f17e98",
+        "type": "debug",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "5ddb3217.e4d4ec",
+        "type": "ui_text",
+        "z": "3f8d5747.64fe38",
+        "group": "d45940ce.b9cb7",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "estado",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 480,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "3258f36.2fba10c",
+        "type": "ui_colour_picker",
+        "z": "3f8d5747.64fe38",
+        "name": "",
+        "label": "",
+        "group": "e7310b07.733d58",
+        "format": "hex",
+        "outformat": "string",
+        "showSwatch": true,
+        "showPicker": true,
+        "showValue": false,
+        "showHue": false,
+        "showAlpha": false,
+        "showLightness": true,
+        "square": "false",
+        "dynOutput": "false",
+        "order": 1,
+        "width": "6",
+        "height": "4",
+        "passthru": true,
+        "topic": "",
+        "x": 230,
+        "y": 1120,
+        "wires": [
+            []
+        ]
+    },
+
+        "type": "ui_group",
+        "z": "",
+        "name": "Frecuencia de actividad sexual por meses",
+        "tab": "1bf19278.efedfe",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "e7310b07.733d58",
+        "type": "ui_group",
+        "z": "",
+        "name": "Color favorito ",
+        "tab": "1bf19278.efedfe",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "1bf19278.efedfe",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Salud",
+        "icon": "dashboard",
+        "order": 2,
+ }
+```
 
 ### Calculadora Científica en python
 
@@ -595,15 +1241,66 @@ while 1:
 ```
 ## 9.Descripción de Prerrequisitos y configuración
 
-### Node-Red
+### Node-Red interfaz HMI
+Para poder realizar la interfaz HMI en Node-Red se necesita una serie de pequeños prerrequisitos y leves configuraciones enlistadas a continuación:
+ - Crear una sesión o lugar de trabajo en Node-RED, la cual se puede ejecutar una vez instalado desde el node.js command prompt con el comando “node-red”
+ - Como configuración adicional tenemos que descargar el paquete de palettes que nos ofrece “Node-RED dashboard”
 
 ### Calculadora científica programada con python para RaspberryPi
 Al ser simulado en create code no es necesario contar con ningún prerrequisito ya que las librerías que se usan ya están incluidas en la página pero si se desea implementar en un raspberry se debe incluir las librerías math y gpio as gpio.
 
 ## 10.Aportaciones
+Como aportación se ha interactuado de forma adicional con la interfaz HMI, dándole un sentido a la interfaz, que tenga un motivo y que sea útil a manera de encuesta para una recopilación de datos.
+Para lo cual se ha seguido el siguiente esquema.
+
+![](img/32.png)
+
+Donde como tabla principal tenemos “Salud y genero” lo cual va a ser nuestro tema base para la creacion de los grupos que nos van a servir como campos de recoleccion de datos.
+Estos campos son nuestros grupos y estan compuesto de la siguiente manera
+
+Grupo “Pulse para leer las intrucciones”
+
+En este caso se ha usado el nombre del grupo como una instruccion, en la cual el usuario debera pulsar el boton para leer las intrucciones o que la salida de audio la lea por el.
+
+![](img/33.png)
+
+Ademas este grupo nos permite seleccionar un estado de actividad sexual en la que se encuentre el usuario.
+
+**Grupo 2 Genero**
+
+En este grupo se ha utilizado un dropdown que nos da a elegir una lista de géneros con los que se puede identificar el usuario, además que puede justificar el porqué de su elección y mediante un chart y un gauge puede representar gráficamente qué tan identificado con su género está.
+
+![](img/34.png)
+
+**Grupo 3 “Frecuecia de actividad sexual por mes”**
+
+En este caso se ha usado sliders con rangos de mes a mes para que el usuario pueda representar su actividad sexual del 1 al 10 en esos periodos de tiempos y finalmente estos serán representados en un chart de manera lineal.
+
+![](img/35.png)
+
+**Grupo 4 “color favorito”**
+
+or ultimo pusimos este grupo a manera de curiosidad, para saber los colores favoritos de los usuarios acorde a su genero y preferencias, para lo cual usamos un colour picker y un nodo nuemerico, de esta manera podra elegir su color favorito y cuanto le gusta este color.
+
+![](img/36.png)
+
+Y así finalmente tenemos como producto una interfaz  HMI bastante útil e intuitiva para una recolección de datos.
+
+![](img/37.png)
+
 ## 11.Conclusiones
+Una vez finalizado nuestro trabajo, hemos podido llevar a cabo programas perfectamente funcionales tanto para la plataforma de Node-RED como para Raspberry Pi, donde dichos proyectos fueron desarrollados en entornos extremadamente diferentes,para lo cual se tuvo que dedicar mayor dedicación en la investigación de ambos entornos de trabajo, dando como resultado una plataforma HMI funcional, y una calculadora científica bastante completa la cual se puede accionar mediante entradas de GPIO de nuestro Raspberry Pi.
 ## 12.Recomendaciones
+En cuanto a recomendaciones se trata vamos a dividirlas segun los proyectos realizados.
+#### Node-Red
+Una de las grandes recomendaciones es siempre verificar que los nodos que se vayan añadiendo al programa, esten ubicados de manera correcta dentro del grupo donde se los quiera poner a funcionar, ya que si esto se pasa por alto, podemos tener complicaciones de descuadre en nuestra interfaz HMI.
+#### Calculadora
+En cuanto a la calculadora se debe recomendar que se tenga una buena organización ya que el código es realmente extenso y si no se sigue un esquema o una estructura estricta podemos tener complicaciones a la hora de ponerla en funcionamiento
+
 ## 13.Cronograma
+
+![](img/38.png)
+
 ## 14.Bibliografia
 Yamanoor, Narasimha Saii, and Srihari Yamanoor. “High Quality, Low Cost Education with the Raspberry Pi.” 2017 IEEE Global Humanitarian Technology Conference (GHTC), 2017, doi:10.1109/ghtc.2017.8239274.
 
@@ -613,11 +1310,75 @@ Agbeyangi, A. O., Alashiri, O. A., & Otunuga, A. E. (2020). Automatic Identifica
 
 F, A. (2013, July 20). ¿Qué es Raspberry PI y para qué sirve? Retrieved from https://www.abc.es/tecnologia/informatica-hardware/20130716/abci-raspberry-como-201307151936.html#:~:text=Sin embargo, ¿Qué es Raspberry,su televisor y un teclado».&text=La placa, que antes era,de Ethernet y salida HDMI.
 López, L. (2006). Programación orientada a objetos.
+
+Copdata (2016) Que es una HMI, recopilado de: https://www.copadata.com/es/productos/zenon-software-platform/visualizacion-control/que-significa-hmi-interfaz-humano-maquina-copa-data/
+
 ## 15.Anexos
+### Manual de usuario interfaz HMI en Node-RED
+Para emepezar, tenemos que instalar Node.js en nuestra computadora, para lo cual podemos ingresar en el siguente link:
+
+https://nodejs.org/es/download/
+
+Una vez instalado podemos tener acceso a node.js command prompt
+
+![](img/39.png)
+
+En el cual vamos a ingresar el siguiente comando: “npm install-g-unsafe-perm node-red” para poder instalar de manera adecuada Node-RED y la cual nos va a servir para poder ejecutar otro comando para poder generar una sesión.
+
+![](img/40.png)
+
+Una vez que se haya terminado de instalar vamos a ingresar el comando “node-red” en el command prompt 
+
+![](img/41.png)
+
+Una vez haya terminado de crear un piso de trabajo, podemos tener acceso a el mediante la web, por lo tanto vamos a copiar el link que genera node.js
+
+![](img/42.png)
+
+Una vez que ingresemos el link ya tenemos a nuestra disposicion una plataforma para trabajar en Node-RED
+
+![](img/43.png)
+
+Entonces podemos empezar a diseñar nustra plataforma HMI, para esto es necesario descargar el paquete “node-red dashboards” el cual lo podemos descargar siguiendo los siguientes pasos:
+
+**1.** Nos dirigimos a la esquina superior derecha donde encontraremos varias opciones 
+
+![](img/44.png)
+
+**2.** Elegimos la opcion Manage Palette
+
+![](img/45.png)
+
+**3.** En la pestaña instalar escribimos “dashboard” y procedemos a instalar el paquete
+
+![](img/46.png)
+
+Una vez instalado el paquete podemos hacer uso de los nodos necesarios para poder crear nuestra interfaz HMI.
+
+![](img/47.png)
+
+Una vez que nosotros hayamos decidido que nodos usar, hay pasos que se deben considerar para realizar de manera correcta nustra interfaz, y estos son:
+
+**1.** Crear una tabla, la cual va a agrupar toda la interfaz que hagamos, para esto ingresamos a cualquier nodo y en editar tabla podemos nombrarlo}
+
+![](img/48.png)
+
+**2.** Crear grupos para organizar nustros nodos, para esto vamos a cualquier nodo y le asignamos el grupo al que va a pertenecer, podemos nombrarlos a nuestro gusto
+
+![](img/49.png)
+
+**3.** Asegurarse que en el Layout este correctamente organizado sus grupos y sus nodos para poder representarlos de manera correcta.
+
+![](img/50.png)
+
+**4.** Por ultimo damos en Deploy para que nos genere la interfaz grafica de nustro codigo y copiamos el link de nuestro piso de trabajo y le añadimos las letras “ui” para poder visualizar nuestro trabajo.
+
+![](img/51.png)
+![](img/52.png)
+
 ### Manual de usuario Calculadora científica programada con python para RaspberryPi
 
 Ingresar a la pagina https://create.withcode.uk/
-
 
 ![](img/18.png)
 
